@@ -1,5 +1,7 @@
 # VS002-Vida-y-Muerte-en-CDMX
 Proyecto Hack Visualización de Datos
+#Demo del proyecto vida y muerte CDMX
+/presentacion
 
 #Visualización 1: Muestra nacimientos y defunciones por hospital por periodo de tiempo del 2011-2012 
 /index.html
@@ -9,3 +11,4 @@ Nota usuario chrome: Es necesario levantar un servidor web para no tener problem
 Para usuarios de python ejecutar: 
 > python -m SimpleHTTPServer
 o levantar el MAMP http://www.mamp.info/en/
+

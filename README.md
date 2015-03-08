@@ -1,7 +1,7 @@
 # VS002-Vida-y-Muerte-en-CDMX
 Proyecto Hack Visualización de Datos
-#Demo del proyecto vida y muerte CDMX
-/presentacion
+#Video Demo del proyecto vida y muerte CDMX
+/presentacion/visualización2.mov
 
 #Visualización 1: Muestra nacimientos y defunciones por hospital por periodo de tiempo del 2011-2012 
 /index.html

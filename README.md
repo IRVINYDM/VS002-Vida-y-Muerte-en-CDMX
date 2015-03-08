@@ -5,3 +5,7 @@ Proyecto Hack Visualización de Datos
 /index.html
 #Visulaización 2: Muestra los nacimientos y defunciones en los hospitales ubicados geograficamente
 /geovisual/maps/index.html
+Nota usuario chrome: Es necesario levantar un servidor web para no tener problemas de CORS al cargar el archivo externo JSON.
+Para usuarios de python ejecutar: 
+> python -m SimpleHTTPServer
+o levantar el MAMP http://www.mamp.info/en/

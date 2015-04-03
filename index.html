@@ -332,6 +332,14 @@ function visualizeThisDate(datestring){
 
 	var date = datestring.split("-");
 	dataxfecha = data[date[0]][date[1]];
+	var delay = 500; //1/2 segundo
+	for (var property in dataxfecha) {
+	    if (dataxfecha.hasOwnProperty(property)) {
+	        if (dataxfecha[property]['nacimientos'] >= 200)
+	        	dataxfecha[property]['nacimientos'] = 200;
+	    }
+	}
+
 
 	hospitalesids = Object.keys(dataxfecha);
 	nodes = {};
@@ -351,21 +359,39 @@ function visualizeThisDate(datestring){
 	 //si no tiene defunciones ni nacimientos sal.
 	 if(nodes[hid]["children"].length==0){ return;}
 
+    debugger;
+	bubbleHospitals[hid] = 
+		posicioneshospitales[hid]
+		.selectAll("circle."+hid)
+		.data(
+			bubble.nodes(classes(nodes[hid]))
+		);
 
-	bubbleHospitals[hid] = posicioneshospitales[hid].selectAll("circle."+hid)
-	.data(bubble.nodes(classes(nodes[hid])));
+	bubbleHospitals[hid]
+		.enter()
+		.append("circle")
+			.attr("class",hid)
+			.attr("id",function(d){return d.estado;})
+			.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+			//.style("fill","white")
+			.style("opacity", 0.0)
+			.attr("r",bubble_radius);
 
-	bubbleHospitals[hid].enter().append("circle").attr("class",hid).attr("id",function(d){return d.estado;})
-	.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-	.style("fill","white")
-	.attr("r",bubble_radius);
+	bubbleHospitals[hid]
+		.attr("r", bubble_radius)
+		.transition()
+      	.duration(delay)
+      	.style("fill",function(d,i){ return d.estado=="vivo" ?  colorvivos(i):colorsmuertos(i);})
+      	.style("opacity",1.0)
+      	.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
 
-	bubbleHospitals[hid].attr("r",bubble_radius).transition()
-      .duration(300)
-      .style("fill",function(d,i){return d.estado=="vivo" ?  colorvivos(i):colorsmuertos(i);})
-      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-
-	bubbleHospitals[hid].exit().transition().duration(300).attr("r",0).remove();
+	bubbleHospitals[hid]
+		.exit()
+		.transition()
+		.duration(delay)
+		.style("opacity",0.0)
+		//.attr("r",0)
+		.remove();
 
 	
 	});

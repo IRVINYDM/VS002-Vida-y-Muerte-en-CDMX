@@ -12,3 +12,4 @@ Para usuarios de python ejecutar:
 > python -m SimpleHTTPServer
 o levantar el MAMP http://www.mamp.info/en/
 
+#Las nuevas versiones se movieron al siguiente repositorio: https://github.com/dennysreg/HackCDMX-VizVidaMuerte/
